@@ -1,0 +1,20 @@
+{
+  "name": "my_util_package",
+  "version": "0.0.1-alpha1",
+  "description": "js工具函数package",
+  "main": "./src/index.js",
+  "scripts": {
+    "build": "rollup --config",
+    "dev": "rollup --config --watch"
+  },
+  "keywords": [
+    "js",
+    "utils"
+  ],
+  "author": "zhangwen",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^2.70.1",
+    "typescript": "^4.6.2"
+  }
+}
