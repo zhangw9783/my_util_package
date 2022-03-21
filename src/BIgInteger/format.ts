@@ -2,8 +2,13 @@ interface IBigNumberMaterial {
 	numbers: number[]
 	sign: number
 }
-const zero = {numbers: [], sign: 1};
+const zero = {numbers: [0], sign: 1};
+const nan = {numbers: [], sign: 1};
 export function formatStringToBigNumber(number: string): IBigNumberMaterial {
+	const res: IBigNumberMaterial = {sign: 1, numbers: []};
+	if (number[0] === '+' || number[0] === '-') {
+		res.sign = number[0] === '+' ? 1 : -1;
+	}
 	return zero;
 }
 
