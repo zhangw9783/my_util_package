@@ -5,8 +5,8 @@ interface IBigIntegerOptions {
 }
 
 export class BigInteger {
-	private _number: number[] = []
-	private _sign: number = 1
+	private _number: number[] = [] // 由低位到高位存储
+	private _sign: 1 | -1 = 1
 	private _readonly: boolean = false
 	private _isZero: boolean = false
 	static ZERO = new BigInteger(0, { readonly: true })
@@ -16,15 +16,16 @@ export class BigInteger {
 	 * @param option
 	 */
 	constructor(number: string | number, option?: IBigIntegerOptions) {
+		let material: {numbers: number[], sign: 1 | -1} = {numbers: [], sign: 1};
 		if (typeof number === 'string') {
-			const material = formatStringToBigNumber(number); 
-			this._number = material.numbers;
-			this._sign = material.sign;
+			material = formatStringToBigNumber(number);
 		} else if (typeof number === 'number') {
-			const material = formatNumberToBigNumber(number);
-			this._number = material.numbers;
-			this._sign = material.sign;
+			material = formatNumberToBigNumber(number);
+		} else {
+			material = formatNumberToBigNumber(0);
 		}
+		this._number = material.numbers;
+		this._sign = material.sign;
 		if (option?.readonly) {
 			Object.freeze(this._number);
 		}
@@ -35,6 +36,9 @@ export class BigInteger {
 	}
 	public value(): string {
 		if (this._isZero) return '0';
-		return 'NaN';
+		if (this._number.length === 0) return 'NaN';
+		let res = this._sign === 1 ? '' : '-';
+		res += this._number.join('');
+		return res;
 	}
 }

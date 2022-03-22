@@ -19,4 +19,4 @@ export default [{
 		commonjs(), // 将 CommonJS 转换成 ES2015 模块供 Rollup 处理
 		typescript() // 解析TypeScript
 	]
-}]
+}];
