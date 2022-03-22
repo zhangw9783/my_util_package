@@ -4,6 +4,8 @@ describe('测试BigInteger的value方法', () => {
 	test('测试0值', () => {
 		const zero = BigInteger.ZERO;
 		expect(zero.value()).toBe('0');
+		const zero1 = new BigInteger(0);
+		expect(zero1.value()).toBe('0');
 	});
 	test('测试大于0值', () => {
 		const num1 = new BigInteger(123);

@@ -34,6 +34,10 @@ export class BigInteger {
 		}
 		this._readonly = option?.readonly || false;
 	}
+
+	/**
+	 * 将值转化为字符串
+	 */
 	public value(): string {
 		if (this._isZero) return '0';
 		if (this._number.length === 0) return 'NaN';

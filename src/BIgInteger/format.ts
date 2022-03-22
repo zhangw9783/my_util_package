@@ -36,7 +36,7 @@ export function formatNumberToBigNumber(number: number): IBigNumberMaterial {
 		if (!Number.isInteger(number)) number = number > 0 ? Math.floor(number) : Math.ceil(number);
 		res.sign = number >= 0 ? 1 : -1;
 		number = Math.abs(number);
-		while (number > 0) {
+		while (number >= 0) {
 			const bit = number % 10;
 			res.numbers.unshift(bit);
 			number = Math.floor(number /10);
